@@ -395,6 +395,9 @@ class Literal(Formula):
             [term_map[x] if x in term_map else x for x in self.arguments],
         )
 
+    def is_ground(self) -> bool:
+        return all([isinstance(x, Constant) for x in self.arguments])
+
     def get_predicate(self) -> Predicate:
         return self.predicate
 
